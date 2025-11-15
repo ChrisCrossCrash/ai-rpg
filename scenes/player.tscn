@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://njc5kfbts8vq"]
+
+[ext_resource type="Texture2D" uid="uid://cvvlxfctlkji0" path="res://assets/kenney_rpg-urban-pack/Tiles/tile_0105.png" id="1_3vyb7"]
+
+[node name="Player" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3vyb7")
