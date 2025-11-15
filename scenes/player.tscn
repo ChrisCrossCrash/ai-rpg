@@ -1,8 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://njc5kfbts8vq"]
+[gd_scene load_steps=3 format=3 uid="uid://njc5kfbts8vq"]
 
 [ext_resource type="Texture2D" uid="uid://cvvlxfctlkji0" path="res://assets/kenney_rpg-urban-pack/Tiles/tile_0105.png" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://ccrq123v7cx6a" path="res://scenes/player.gd" id="1_g2els"]
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_g2els")
+speed = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3vyb7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+limit_left = 0
+limit_top = 0
+limit_right = 1154
+limit_bottom = 648
+position_smoothing_enabled = true
