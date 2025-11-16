@@ -15,6 +15,10 @@ run/main_scene="uid://cvw5fayk7bfyu"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[gui]
+
+theme/custom_font="uid://1h74stdvomv5"
+
 [input]
 
 ui_left={

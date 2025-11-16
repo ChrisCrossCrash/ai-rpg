@@ -655,3 +655,4 @@ position = Vector2(639, 304)
 
 [node name="DialogBox" parent="CanvasLayer" instance=ExtResource("5_ppgk2")]
 visible = false
+custom_minimum_size = Vector2(0, 160)

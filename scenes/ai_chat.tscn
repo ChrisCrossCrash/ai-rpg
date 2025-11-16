@@ -34,6 +34,11 @@ follow_focus = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_colors/default_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/normal_font_size = 24
+theme_override_font_sizes/bold_font_size = 24
+theme_override_font_sizes/bold_italics_font_size = 24
+theme_override_font_sizes/italics_font_size = 24
+theme_override_font_sizes/mono_font_size = 24
 bbcode_enabled = true
 fit_content = true
 
@@ -43,6 +48,7 @@ layout_mode = 2
 [node name="PromptLabel" type="Label" parent="VBoxContainer/InputRow"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_font_sizes/font_size = 24
 text = "> "
 
 [node name="UserInput" type="LineEdit" parent="VBoxContainer/InputRow"]
@@ -51,9 +57,11 @@ size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_colors/caret_color = Color(0.2, 0.2, 0.2, 1)
 theme_override_constants/caret_width = 12
+theme_override_font_sizes/font_size = 24
 theme_override_styles/normal = SubResource("StyleBoxEmpty_rwcgm")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_k48mc")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yhi0a")
+keep_editing_on_text_submit = true
 caret_blink = true
 
 [connection signal="text_submitted" from="VBoxContainer/InputRow/UserInput" to="." method="_on_user_input_text_submitted"]
