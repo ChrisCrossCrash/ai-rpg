@@ -45,13 +45,16 @@ func _unhandled_input(event: InputEvent) -> void:
 func _update_animation() -> void:
 	var anim := ""
 	var is_moving := velocity != Vector2.ZERO
+	var interact_area = $InteractArea
 
 	if abs(direction_facing.x) > abs(direction_facing.y):
+		interact_area.rotation = -PI/2 if direction_facing.x > 0 else PI/2
 		if is_moving:
 			anim = "right_walk" if direction_facing.x > 0 else "left_walk"
 		else:
 			anim = "right_idle" if direction_facing.x > 0 else "left_idle"
 	else:
+		interact_area.rotation = 0.0 if direction_facing.y > 0 else PI
 		if is_moving:
 			anim = "down_walk" if direction_facing.y > 0 else "up_walk"
 		else:

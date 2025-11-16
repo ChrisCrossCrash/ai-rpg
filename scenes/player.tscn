@@ -154,7 +154,7 @@ animations = [{
 size = Vector2(12, 6)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
-radius = 13.038404
+radius = 7.071068
 
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
@@ -162,8 +162,8 @@ speed = 100
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oprun")
-animation = &"left_walk"
-frame_progress = 0.3971064
+animation = &"down_idle"
+frame_progress = 0.22214079
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -179,6 +179,7 @@ shape = SubResource("RectangleShape2D_g2els")
 [node name="InteractArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+position = Vector2(0, 9)
 shape = SubResource("CircleShape2D_g2els")
 
 [connection signal="area_entered" from="InteractArea" to="." method="_on_area_entered"]
