@@ -2,8 +2,8 @@ extends CharacterBody2D
 
 @export var speed := 60
 
-var direction := Vector2.ZERO
-var direction_last_moved := Vector2.ZERO
+var direction_input := Vector2.ZERO
+var direction_facing := Vector2.DOWN
 var nearby_interactables: Array = []
 var current_target: Node = null
 
@@ -44,30 +44,28 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _update_animation() -> void:
 	var anim := ""
-	
-	if direction_last_moved == Vector2.ZERO:
-		anim = "down_idle"
-	else:
-		if abs(direction_last_moved.x) > abs(direction_last_moved.y):
-			if velocity:
-				anim = "right_walk" if direction_last_moved.x > 0 else "left_walk"
-			else:
-				anim = "right_idle" if direction_last_moved.x > 0 else "left_idle"
+	var is_moving := velocity != Vector2.ZERO
+
+	if abs(direction_facing.x) > abs(direction_facing.y):
+		if is_moving:
+			anim = "right_walk" if direction_facing.x > 0 else "left_walk"
 		else:
-			if velocity:
-				anim = "down_walk" if direction_last_moved.y > 0 else "up_walk"
-			else:
-				anim = "down_idle" if direction_last_moved.y > 0 else "up_idle"
+			anim = "right_idle" if direction_facing.x > 0 else "left_idle"
+	else:
+		if is_moving:
+			anim = "down_walk" if direction_facing.y > 0 else "up_walk"
+		else:
+			anim = "down_idle" if direction_facing.y > 0 else "up_idle"
 		
 	if $AnimatedSprite2D.animation != anim:
 		$AnimatedSprite2D.play(anim)
 		
 
 func _physics_process(_delta: float) -> void:
-	direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	if direction != Vector2.ZERO:
-		direction_last_moved = direction
-	velocity = direction * speed
+	direction_input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	if direction_input != Vector2.ZERO:
+		direction_facing = direction_input
+	velocity = direction_input * speed
 	move_and_slide()
 	
 	_update_animation()
