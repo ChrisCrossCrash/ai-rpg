@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://njc5kfbts8vq"]
+[gd_scene load_steps=5 format=3 uid="uid://njc5kfbts8vq"]
 
 [ext_resource type="Texture2D" uid="uid://cvvlxfctlkji0" path="res://assets/kenney_rpg-urban-pack/Tiles/tile_0105.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://ccrq123v7cx6a" path="res://scenes/player.gd" id="1_g2els"]
@@ -6,11 +6,15 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g2els"]
 size = Vector2(12, 6)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
+radius = 13.038404
+
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_g2els")
 speed = 100
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
 texture = ExtResource("1_3vyb7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -22,5 +26,9 @@ limit_bottom = 648
 position_smoothing_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_g2els")
+
+[node name="InteractArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractArea"]
+shape = SubResource("CircleShape2D_g2els")
