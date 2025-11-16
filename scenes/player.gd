@@ -6,6 +6,7 @@ var direction_input := Vector2.ZERO
 var direction_facing := Vector2.DOWN
 var nearby_interactables: Array = []
 var current_target: Node = null
+@onready var dialog_box := get_tree().current_scene.get_node("CanvasLayer/DialogBox")
 
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("interactable"):
@@ -40,7 +41,10 @@ func _try_interact() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("interact"):
-		_try_interact()
+		if dialog_box.visible:
+			dialog_box.hide_dialog()
+		else:
+			_try_interact()
 
 func _update_animation() -> void:
 	var anim := ""
@@ -66,9 +70,15 @@ func _update_animation() -> void:
 
 func _physics_process(_delta: float) -> void:
 	direction_input = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+
+	# Do not allow player movement while dialog box is open.
+	if dialog_box.visible:
+		direction_input = Vector2.ZERO
+
+	# Update facing direction on input
 	if direction_input != Vector2.ZERO:
 		direction_facing = direction_input
+
 	velocity = direction_input * speed
-	move_and_slide()
-	
+	move_and_slide()	
 	_update_animation()

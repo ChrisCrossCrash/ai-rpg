@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=4 uid="uid://cvw5fayk7bfyu"]
+[gd_scene load_steps=9 format=4 uid="uid://cvw5fayk7bfyu"]
 
 [ext_resource type="Texture2D" uid="uid://dl3vv8hjbsmys" path="res://assets/kenney_tiny-town/Tilemap/tilemap_packed.png" id="1_2q6dc"]
 [ext_resource type="Texture2D" uid="uid://bulluaojpfn6h" path="res://assets/kenney_rpg-urban-pack/Tilemap/tilemap_packed.png" id="2_w7c3h"]
 [ext_resource type="PackedScene" uid="uid://njc5kfbts8vq" path="res://scenes/player.tscn" id="3_w8frs"]
 [ext_resource type="PackedScene" uid="uid://qe26bk44wbb1" path="res://scenes/npc.tscn" id="4_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://ctpcmwmxvkgin" path="res://scenes/dialog_box.tscn" id="5_ppgk2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w7c3h"]
 texture = ExtResource("1_2q6dc")
@@ -649,3 +650,8 @@ position = Vector2(584, 309)
 
 [node name="NPC" parent="Entities" instance=ExtResource("4_mx8sn")]
 position = Vector2(639, 304)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="DialogBox" parent="CanvasLayer" instance=ExtResource("5_ppgk2")]
+visible = false
