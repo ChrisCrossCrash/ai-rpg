@@ -4,5 +4,6 @@ extends CharacterBody2D
 
 func interact(_player: CharacterBody2D) -> void:
 	var dialog_box := get_tree().current_scene.get_node("CanvasLayer/DialogBox")
-	var message = "Hi! I'm " + npc_name
-	dialog_box.show_dialog(message)
+	print(dialog_box)
+	var first_line := "Hi! I'm %s! What's your name, traveller?" % npc_name
+	dialog_box.start_conversation(first_line)

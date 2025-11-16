@@ -4,8 +4,8 @@ signal player_message_submitted(text: String)
 signal conversation_ended
 
 @onready var chat_log: RichTextLabel = $VBoxContainer/ScrollContainer/ChatLog
-@onready var user_input: LineEdit      = $VBoxContainer/InputRow/UserInput
-@onready var scroll_container: ScrollContainer   = $VBoxContainer/ScrollContainer
+@onready var user_input: LineEdit = $VBoxContainer/InputRow/UserInput
+@onready var scroll_container: ScrollContainer = $VBoxContainer/ScrollContainer
 
 var lines: Array[String] = []  # keeps history, rendered as one big block
 

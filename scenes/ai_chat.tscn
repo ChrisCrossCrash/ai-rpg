@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://dd15i6wg6ruvn"]
+[gd_scene load_steps=5 format=3 uid="uid://dd15i6wg6ruvn"]
 
 [ext_resource type="Script" uid="uid://cuagyuuo04i3m" path="res://scenes/ai_chat.gd" id="1_rwcgm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rwcgm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k48mc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yhi0a"]
 
 [node name="AiChat" type="Control"]
 layout_mode = 3
@@ -12,26 +18,42 @@ grow_vertical = 2
 script = ExtResource("1_rwcgm")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 follow_focus = true
 
 [node name="ChatLog" type="RichTextLabel" parent="VBoxContainer/ScrollContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.2, 0.2, 0.2, 1)
 bbcode_enabled = true
+fit_content = true
 
 [node name="InputRow" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 
 [node name="PromptLabel" type="Label" parent="VBoxContainer/InputRow"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
 text = "> "
 
 [node name="UserInput" type="LineEdit" parent="VBoxContainer/InputRow"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_colors/caret_color = Color(0.2, 0.2, 0.2, 1)
+theme_override_constants/caret_width = 12
+theme_override_styles/normal = SubResource("StyleBoxEmpty_rwcgm")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_k48mc")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yhi0a")
+caret_blink = true
 
 [connection signal="text_submitted" from="VBoxContainer/InputRow/UserInput" to="." method="_on_user_input_text_submitted"]
