@@ -6,13 +6,6 @@ var direction := Vector2.ZERO
 var nearby_interactables: Array = []
 var current_target: Node = null
 
-func _ready() -> void:
-	var area := $InteractArea
-	area.body_entered.connect(_on_body_entered)
-	area.body_exited.connect(_on_body_exited)
-	area.area_entered.connect(_on_area_entered)
-	area.area_exited.connect(_on_area_exited)
-
 func _on_body_entered(body: Node) -> void:
 	if body.is_in_group("interactable"):
 		nearby_interactables.append(body)
